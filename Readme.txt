@@ -1,23 +1,34 @@
 #This folder contains the processed input files and the codes to obtain the outputs
 #Example usage (with python v2.7):
+#If using this code or method, please cite the manuscript: 
+#Kovacs et al., Uncovering the genetic blueprint of the C. elegans nervous system
+#https://doi.org/10.1101/2020.05.04.076315
 
-####################Input data files:
+###################
+#Input data files:
 ###################
 #Neuron names of columns and rows:
-NeurNamesContact.csv#B matrix for gap junctions with Cook et al. data:GapJunctContact.csv
+NeurNamesContact.csv
+#B matrix for gap junctions with Cook et al. data:
+GapJunctContact.csv
 GapJunctContact.txt
 #B matrix for gap junctions with Varshney et al. data:
 CEO_Gap_OnlyContact.csv
-#C matrix:ContactSubgraphMatrix.csvContactSubgraphMatrix.txt
+#C matrix:
+ContactSubgraphMatrix.csv
+ContactSubgraphMatrix.txt
 #X matrix of labels corresponding to innexin expression:
-INXExpressionJustContact.csv
+INXExpressionJustContact.csv
+
+
 ###################
 #Solving the SCM in a range of alpha regularization parameter values:
 ###################
 python SCM_alpha.py ContactSubgraphMatrix.csv GapJunctContact.csv INXExpressionJustContact.csv 0.215 0.219 0.005
 #This leads to the output files:
 #workfile.txt -> Values of r^2/tau^2 for each tested alpha regularization parameter to determine the optimal alpha=0.215
-#rule_matrix_MP.csv -> alpha->0 solution with the Moore-Penrose pseudo-inverse#rule_matrix_0.2150.csv -> regularized solution with the optimal alpha=0.215
+#rule_matrix_MP.csv -> alpha->0 solution with the Moore-Penrose pseudo-inverse
+#rule_matrix_0.2150.csv -> regularized solution with the optimal alpha=0.215
 
 
 ###################
@@ -31,4 +42,4 @@ g++ -O3 alpha_matrix.cpp -o alpha_matrix.out
 python SCM_alpha_rnd.py ContactSubgraphMatrix.csv alpha_exp_GapJunctContact.txt_ContactSubgraphMatrix.txt_100.csv INXExpressionJustContact.csv 0.215
 #This leads to the output files:
 #rule_matrix_0.2150rnd_av.csv -> mean value of each rule in the randomized ensemble
-#rule_matrix_0.2150rnd_var.csv -> variance of each rule in the randomized ensemble
+#rule_matrix_0.2150rnd_var.csv -> variance of each rule in the randomized ensemble
