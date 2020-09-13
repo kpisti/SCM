@@ -7,6 +7,9 @@
 ###################
 #Input data files:
 ###################
+# Connectome and contact matrices were downloaded from https://wormwiring.org/pages/adjacency.html
+# Curated gene expression data is available from https://pubmed.ncbi.nlm.nih.gov/27875702/
+# The Varshney connectome used in the SI can be downloaded from https://www.wormatlas.org/neuronalwiring.html#Connectivitydata
 #Neuron names of columns and rows:
 NeurNamesContact.csv
 #B matrix for gap junctions with Cook et al. data:
