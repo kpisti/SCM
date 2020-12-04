@@ -42,7 +42,9 @@ int main(int argc, char *argv[])
                 }
             }
         else
-            {diag.insert(e);
+            {if (e>0)
+                {diag.insert(i);
+                }
             }
         }
     d=c;
@@ -97,10 +99,17 @@ int main(int argc, char *argv[])
     for(int ii=1;ii<=size;ii++)
         {for(int ij=1;ij<=size;ij++)
             {v=0;
-            if (d.find(ii)!=d.end())
-                {if (d[ii].find(ij)!=d[ii].end())
-                    {v=1;
+            if (ii!=ij)
+                {if (d.find(ii)!=d.end())
+                    {if (d[ii].find(ij)!=d[ii].end())
+                        {v=1;
+                        }
                     }
+                }
+            else
+                {//If diagonals are meant to be kept unchanged:
+                //v=1;
+                //Currently diagonals are set to zero in the randomized networks
                 }
             if (v==1)
                 {if (ii!=ij)
